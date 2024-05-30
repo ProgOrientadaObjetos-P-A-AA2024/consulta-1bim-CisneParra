@@ -1,0 +1,52 @@
+class Libro:
+    def __init__(self, titulo, autor, precio, stock):
+        self.titulo = titulo
+        self.autor = autor
+        self.precio = precio
+        self.stock = stock
+
+    def mostrar_informacion(self):
+        print(f"Título: {self.titulo}")
+        print(f"Autor: {self.autor}")
+        print(f"Precio: {self.precio:.2f}")
+        print(f"Stock: {self.stock}")
+
+    def vender(self, cantidad):
+        if self.stock >= cantidad:
+            self.stock -= cantidad
+            print(f"Se han vendido {cantidad} unidades de '{self.titulo}'.")
+        else:
+            print(f"No hay suficiente stock de '{self.titulo}' para vender {cantidad} unidades.")
+
+class Tienda:
+    def __init__(self):
+        self.libros = []
+
+    def agregar_libro(self, libro):
+        self.libros.append(libro)
+
+    def buscar_libro(self, titulo):
+        for libro in self.libros:
+            if libro.titulo.lower() == titulo.lower():
+                return libro
+        return None
+
+    def mostrar_inventario(self):
+        print("Inventario de la tienda:")
+        for libro in self.libros:
+            libro.mostrar_informacion()
+            print()
+
+# Crear una tienda y agregar algunos libros
+tienda = Tienda()
+tienda.agregar_libro(Libro("La Odisea", "Homero", 25.99, 10))
+tienda.agregar_libro(Libro("Cien Años de Soledad", "Gabriel García Márquez", 18.50, 15))
+tienda.agregar_libro(Libro("El Principito", "Antoine de Saint-Exupéry", 12.75, 20))
+
+# Buscar y vender un libro
+libro_a_vender = tienda.buscar_libro("Cien Años de Soledad")
+if libro_a_vender:
+    libro_a_vender.vender(3)
+
+# Mostrar el inventario de la tienda
+tienda.mostrar_inventario()

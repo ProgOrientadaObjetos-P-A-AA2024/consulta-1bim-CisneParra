@@ -1,0 +1,36 @@
+# Función para agregar un nuevo usuario
+def agregar_usuario(usuarios, nombre, edad, email, telefono):
+    nuevo_usuario = (nombre, edad, email, telefono)
+    usuarios.append(nuevo_usuario)
+
+# Función para buscar un usuario por nombre
+def buscar_usuario(usuarios, nombre):
+    for usuario in usuarios:
+        if usuario[0] == nombre:
+            return usuario
+    return None
+
+# Función para mostrar la información de un usuario
+def mostrar_usuario(usuario):
+    nombre, edad, email, telefono = usuario
+    print(f"Nombre: {nombre}")
+    print(f"Edad: {edad}")
+    print(f"Correo electrónico: {email}")
+    print(f"Teléfono: {telefono}")
+
+# Lista de usuarios (tuplas)
+usuarios = [
+    ("Juan Pérez", 35, "juan.perez@example.com", "555-1234"),
+    ("María González", 28, "maria.gonzalez@example.com", "555-5678"),
+    ("Carlos Rodríguez", 42, "carlos.rodriguez@example.com", "555-9012")
+]
+
+# Agregar un nuevo usuario
+agregar_usuario(usuarios, "Ana Sánchez", 24, "ana.sanchez@example.com", "555-3456")
+
+# Buscar y mostrar la información de un usuario
+usuario_a_mostrar = buscar_usuario(usuarios, "María González")
+if usuario_a_mostrar:
+    mostrar_usuario(usuario_a_mostrar)
+else:
+    print("Usuario no encontrado.")

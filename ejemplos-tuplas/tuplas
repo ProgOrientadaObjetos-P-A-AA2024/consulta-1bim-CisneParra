@@ -1,0 +1,30 @@
+# Clase para representar un punto geográfico
+class PuntoGeografico:
+    def __init__(self, latitud, longitud):
+        self.coordenadas = (latitud, longitud)
+
+    def mostrar_coordenadas(self):
+        print(f"Latitud: {self.coordenadas[0]}, Longitud: {self.coordenadas[1]}")
+
+    def calcular_distancia(self, otro_punto):
+        # Implementación de la fórmula de distancia entre dos puntos geográficos
+        lat1, lon1 = self.coordenadas
+        lat2, lon2 = otro_punto.coordenadas
+        # Cálculo de la distancia...
+        distancia = ((lat1 - lat2) ** 2 + (lon1 - lon2) ** 2) ** 0.5
+        return distancia
+
+# Crear algunos puntos geográficos
+punto1 = PuntoGeografico(40.730610, -73.935242)  # Nueva York
+punto2 = PuntoGeografico(51.507351, -0.127758)   # Londres
+punto3 = PuntoGeografico(48.856613, 2.352222)    # París
+
+# Mostrar las coordenadas de los puntos
+punto1.mostrar_coordenadas()
+punto2.mostrar_coordenadas()
+punto3.mostrar_coordenadas()
+
+# Calcular la distancia entre puntos
+distancia_ny_londres = punto1.calcular_distancia(punto2)
+distancia_ny_paris = punto1.calcular_distancia(punto3)
+print(f"

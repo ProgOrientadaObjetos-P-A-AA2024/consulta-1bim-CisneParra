@@ -1,0 +1,37 @@
+class Contacto:
+    def __init__(self, nombre, telefono, email):
+        self.nombre = nombre
+        self.telefono = telefono
+        self.email = email
+
+    def mostrar_informacion(self):
+        print(f"Nombre: {self.nombre}")
+        print(f"Teléfono: {self.telefono}")
+        print(f"Email: {self.email}")
+
+# Crear una lista de contactos
+agenda = [
+    Contacto("Juan Pérez", "555-1234", "juan.perez@example.com"),
+    Contacto("María González", "555-5678", "maria.gonzalez@example.com"),
+    Contacto("Carlos Rodríguez", "555-9012", "carlos.rodriguez@example.com"),
+    Contacto("Ana Sánchez", "555-3456", "ana.sanchez@example.com")
+]
+
+# Buscar un contacto por nombre
+nombre_a_buscar = "María González"
+for contacto in agenda:
+    if contacto.nombre == nombre_a_buscar:
+        contacto.mostrar_informacion()
+        break
+else:
+    print(f"No se encontró el contacto '{nombre_a_buscar}' en la agenda.")
+
+# Agregar un nuevo contacto
+nuevo_contacto = Contacto("Pedro Gómez", "555-7890", "pedro.gomez@example.com")
+agenda.append(nuevo_contacto)
+
+# Mostrar toda la agenda
+print("\nAgenda de contactos:")
+for contacto in agenda:
+    contacto.mostrar_informacion()
+    print()

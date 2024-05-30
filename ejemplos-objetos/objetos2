@@ -1,0 +1,53 @@
+class Libro:
+    def __init__(self, titulo, autor, editorial, año_publicacion):
+        self.titulo = titulo
+        self.autor = autor
+        self.editorial = editorial
+        self.año_publicacion = año_publicacion
+        self.prestado = False
+
+    def prestar(self):
+        if not self.prestado:
+            self.prestado = True
+            print(f"El libro '{self.titulo}' ha sido prestado.")
+        else:
+            print(f"El libro '{self.titulo}' ya se encuentra prestado.")
+
+    def devolver(self):
+        if self.prestado:
+            self.prestado = False
+            print(f"El libro '{self.titulo}' ha sido devuelto.")
+        else:
+            print(f"El libro '{self.titulo}' no se encuentra prestado.")
+
+class Biblioteca:
+    def __init__(self):
+        self.libros = []
+
+    def agregar_libro(self, libro):
+        self.libros.append(libro)
+
+    def buscar_libro(self, titulo):
+        for libro in self.libros:
+            if libro.titulo.lower() == titulo.lower():
+                return libro
+        return None
+
+    def mostrar_libros(self):
+        print("Libros en la biblioteca:")
+        for libro in self.libros:
+            print(f"- {libro.titulo} ({libro.autor})")
+
+# Crear una biblioteca y agregar algunos libros
+biblioteca = Biblioteca()
+biblioteca.agregar_libro(Libro("La Odisea", "Homero", "Editorial Gredos", 1980))
+biblioteca.agregar_libro(Libro("Cien Años de Soledad", "Gabriel García Márquez", "Editorial Sudamericana", 1967))
+biblioteca.agregar_libro(Libro("El Principito", "Antoine de Saint-Exupéry", "Editorial Emecé", 1943))
+
+# Buscar y prestar un libro
+libro_a_prestar = biblioteca.buscar_libro("Cien Años de Soledad")
+if libro_a_prestar:
+    libro_a_prestar.prestar()
+
+# Mostrar los libros en la biblioteca
+biblioteca.mostrar_libros()

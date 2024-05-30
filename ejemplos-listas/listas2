@@ -1,0 +1,44 @@
+class Producto:
+    def __init__(self, nombre, precio, cantidad):
+        self.nombre = nombre
+        self.precio = precio
+        self.cantidad = cantidad
+
+    def mostrar_informacion(self):
+        print(f"Nombre: {self.nombre}")
+        print(f"Precio: {self.precio:.2f}")
+        print(f"Cantidad: {self.cantidad}")
+
+# Crear una lista de productos
+inventario = [
+    Producto("Laptop", 999.99, 10),
+    Producto("Teléfono", 499.99, 20),
+    Producto("Teclado", 49.99, 50),
+    Producto("Audífonos", 79.99, 30)
+]
+
+# Buscar un producto por nombre
+nombre_a_buscar = "Teléfono"
+for producto in inventario:
+    if producto.nombre == nombre_a_buscar:
+        producto.mostrar_informacion()
+        break
+else:
+    print(f"No se encontró el producto '{nombre_a_buscar}' en el inventario.")
+
+# Actualizar la cantidad de un producto
+producto_a_actualizar = "Laptop"
+nueva_cantidad = 15
+for producto in inventario:
+    if producto.nombre == producto_a_actualizar:
+        producto.cantidad = nueva_cantidad
+        print(f"Se ha actualizado la cantidad de {producto_a_actualizar} a {nueva_cantidad}.")
+        break
+else:
+    print(f"No se encontró el producto '{producto_a_actualizar}' en el inventario.")
+
+# Mostrar todo el inventario
+print("\nInventario de productos:")
+for producto in inventario:
+    producto.mostrar_informacion()
+    print()
